@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aoc-2020", "aoc-2020\aoc-2020.csproj", "{B0CF5157-E4F8-49FE-9DBD-C71E88FD5B1D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|anycpu = Debug|anycpu
+		Release|anycpu = Release|anycpu
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0CF5157-E4F8-49FE-9DBD-C71E88FD5B1D}.Debug|anycpu.ActiveCfg = Debug|anycpu
+		{B0CF5157-E4F8-49FE-9DBD-C71E88FD5B1D}.Debug|anycpu.Build.0 = Debug|anycpu
+		{B0CF5157-E4F8-49FE-9DBD-C71E88FD5B1D}.Release|anycpu.ActiveCfg = Release|anycpu
+		{B0CF5157-E4F8-49FE-9DBD-C71E88FD5B1D}.Release|anycpu.Build.0 = Release|anycpu
+	EndGlobalSection
+EndGlobal
