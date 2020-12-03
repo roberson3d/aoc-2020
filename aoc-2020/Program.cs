@@ -57,6 +57,24 @@ namespace aoc2020
 			Console.WriteLine($"pt1 Number of valid passcodes: {values02.Where(passcode => sledChecker.IsValid(passcode)).Count()}");
 			var otcChecker = new OTCPasscodeChecker();
 			Console.WriteLine($"pt2 Number of valid passcodes: {values02.Where(passcode => otcChecker.IsValid(passcode)).Count()}");
+
+
+			/************ Day 03 **************/
+			int slope = 3, trees = 0;
+			var map = File.ReadAllLines(@"Data/input-D03.txt");
+
+			for (int x = 0, y = 0; y < map.Length; y++, x += slope) {
+				var plot = map[y][x % map[y].Length];
+
+				var isTree = plot == '#';
+				if (isTree) {
+					trees++;
+				}
+
+				//Console.WriteLine($"{map[y]} ::: {(isTree ? trees.ToString () : ".")}   {y.ToString ()}, {x.ToString ()}");
+			}
+
+			Console.WriteLine($"pt1 Tree Count: {trees}");
 		}
 	}
 }
