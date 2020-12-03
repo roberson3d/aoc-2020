@@ -9,7 +9,8 @@ namespace aoc2020
 	{
 		public static void Main(string[] args)
 		{
-      /************ Day 01 **************/
+			/************ Day 01 **************/
+			var target = 2020;
 			var values = File.ReadAllLines(@"Data/input-D01.txt")
 				.Select(line => int.Parse(line));
 
@@ -34,10 +35,9 @@ namespace aoc2020
 				Console.WriteLine($"pt2 Sum {target} not found.");
 			}
   
-      /************ Day 02 **************/
-			var checker = new OTCPasscodeChecker();
+			/************ Day 02 **************/
 			Regex expression = new Regex(@"(?<min>\d+)-(?<max>\d+)\s(?<char>\w):\s(?<password>\w+)");
-			var values = File.ReadAllLines(@"Data/input-D02.txt")
+			var values02 = File.ReadAllLines(@"Data/input-D02.txt")
 				.Select(line => {
 					var match = expression.Match(line);
 					if (match.Success) {
@@ -51,11 +51,12 @@ namespace aoc2020
 
 					Console.WriteLine($"Failed to parse: {line}");
 					return new Passcode();
-				})
-				.Where(passcode => checker.IsValid(passcode))
-				.ToList();
+				});
 
-			Console.WriteLine($"Number of valid passcodes: {values.Count()}");
+			var sledChecker = new SLEDPasscodeChecker();
+			Console.WriteLine($"pt1 Number of valid passcodes: {values02.Where(passcode => sledChecker.IsValid(passcode)).Count()}");
+			var otcChecker = new OTCPasscodeChecker();
+			Console.WriteLine($"pt2 Number of valid passcodes: {values02.Where(passcode => otcChecker.IsValid(passcode)).Count()}");
 		}
 	}
 }
