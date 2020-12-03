@@ -3,13 +3,38 @@ using System.Linq;
 using System.IO;
 using System.Text.RegularExpressions;
 
-
 namespace aoc2020
 {
 	partial class MainClass
 	{
 		public static void Main(string[] args)
 		{
+      /************ Day 01 **************/
+			var values = File.ReadAllLines(@"Data/input-D01.txt")
+				.Select(line => int.Parse(line));
+
+			var arr = new int[2] { 0, 0 };
+			var search = new SumSearcher(target, values.ToList ());
+
+
+			if (search.FindSums(ref arr)) {
+				var product = arr[0];
+				for (int i = 1; i < arr.Length; i++) { product *= arr[i]; }
+				Console.WriteLine($"pt1 Found! {string.Join(" * ", arr)} = {product}");
+			} else {
+				Console.WriteLine($"pt1 Sum {target} not found.");
+			}
+
+			arr = new int[3] { 0, 0, 0 };
+			if (search.FindSums(ref arr)) {
+				var product = arr[0];
+				for (int i = 1; i < arr.Length; i++) { product *= arr[i]; }
+				Console.WriteLine($"pt2 Found! {string.Join(" * ", arr)} = {product}");
+			} else {
+				Console.WriteLine($"pt2 Sum {target} not found.");
+			}
+  
+      /************ Day 02 **************/
 			var checker = new OTCPasscodeChecker();
 			Regex expression = new Regex(@"(?<min>\d+)-(?<max>\d+)\s(?<char>\w):\s(?<password>\w+)");
 			var values = File.ReadAllLines(@"Data/input-D02.txt")

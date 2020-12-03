@@ -33,6 +33,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Passcode.cs" />
+    <Compile Include="SumSearcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\input-D01.txt">
