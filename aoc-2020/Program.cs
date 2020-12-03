@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.IO;
-using System.Collections.Generic;
 
 namespace aoc2020
 {
@@ -12,69 +11,28 @@ namespace aoc2020
 		public static void Main(string[] args)
 		{
 			var values = File.ReadAllLines(@"Data/input-D01.txt")
-				.Select(line => int.Parse(line))
-				.ToList();
+				.Select(line => int.Parse(line));
 
-			//if (FindSums(values, out var x, out var y)) {
-			//	Console.WriteLine($"Found! {values[x]} * {values[y]} = {values[x] * values[y]}");
-			//} else {
-			//	Console.WriteLine($"Sum {target} not found.");
-			//}
+			var arr = new int[2] { 0, 0 };
+			var search = new SumSearcher(target, values.ToList ());
 
-			if (FindSums3 (values, out var arr)) {
+
+			if (search.FindSums(ref arr)) {
 				var product = arr[0];
 				for (int i = 1; i < arr.Length; i++) { product *= arr[i]; }
-				Console.WriteLine($"Found! {string.Join (", ", arr)}. Product = {product}");
+				Console.WriteLine($"pt1 Found! {string.Join(" * ", arr)} = {product}");
 			} else {
-				Console.WriteLine($"Sum {target} not found.");
-			}
-		}
-
-		static bool FindSums2 (List<int> list, out int x, out int y)
-		{
-			list.Sort();
-
-			x = 0;
-			y = list.Count() - 1;
-
-			do {
-				while (list[x] + list[y] < target) {
-					x++;
-				}
-
-				if (list[x] + list[y] == target) {
-					return true;
-				}
-
-				while (list[x] + list[y] > target) {
-					y--;
-				}
-			} while (x <= y);
-
-			return false;
-		}
-
-		static bool FindSums3 (List<int> list, out int[] arr)
-		{
-			list.Sort();
-
-			for (int i = 0; i < list.Count; i++) {
-				for (int j = i + 1; j < list.Count; j++) {
-					for (int k = j + 1; k < list.Count; k++) {
-						if (list[i] + list[j] + list[k] == target) {
-							arr = new int[] {
-								list[i],
-								list[j],
-								list[k]
-							};
-							return true;
-						}
-					}
-				}
+				Console.WriteLine($"pt1 Sum {target} not found.");
 			}
 
-			arr = null;
-			return false;
+			arr = new int[3] { 0, 0, 0 };
+			if (search.FindSums(ref arr)) {
+				var product = arr[0];
+				for (int i = 1; i < arr.Length; i++) { product *= arr[i]; }
+				Console.WriteLine($"pt2 Found! {string.Join(" * ", arr)} = {product}");
+			} else {
+				Console.WriteLine($"pt2 Sum {target} not found.");
+			}
 		}
 	}
 }
