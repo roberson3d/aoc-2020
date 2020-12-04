@@ -34,12 +34,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Passcode.cs" />
     <Compile Include="SumSearcher.cs" />
+    <Compile Include="Slope.cs" />
+    <Compile Include="Toboggan.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\input-D01.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\input-D02.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\input-D03.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -15,7 +15,7 @@ namespace aoc2020
 				.Select(line => int.Parse(line));
 
 			var arr = new int[2] { 0, 0 };
-			var search = new SumSearcher(target, values.ToList ());
+			var search = new SumSearcher(target, values.ToList());
 
 
 			if (search.FindSums(ref arr)) {
@@ -34,7 +34,7 @@ namespace aoc2020
 			} else {
 				Console.WriteLine($"pt2 Sum {target} not found.");
 			}
-  
+
 			/************ Day 02 **************/
 			Regex expression = new Regex(@"(?<min>\d+)-(?<max>\d+)\s(?<char>\w):\s(?<password>\w+)");
 			var values02 = File.ReadAllLines(@"Data/input-D02.txt")
@@ -57,6 +57,22 @@ namespace aoc2020
 			Console.WriteLine($"pt1 Number of valid passcodes: {values02.Where(passcode => sledChecker.IsValid(passcode)).Count()}");
 			var otcChecker = new OTCPasscodeChecker();
 			Console.WriteLine($"pt2 Number of valid passcodes: {values02.Where(passcode => otcChecker.IsValid(passcode)).Count()}");
+
+
+			/************ Day 03 **************/
+			var map = File.ReadAllLines(@"Data/input-D03.txt");
+
+			var toboggan = new Toboggan();
+			long trees = toboggan.Sled(map, new Slope(3, 1));
+			Console.WriteLine($"pt1 Tree Count: {trees}");
+
+			trees = 1;
+			trees *= toboggan.Sled(map, new Slope(1, 1));
+			trees *= toboggan.Sled(map, new Slope(3, 1));
+			trees *= toboggan.Sled(map, new Slope(5, 1));
+			trees *= toboggan.Sled(map, new Slope(7, 1));
+			trees *= toboggan.Sled(map, new Slope(1, 2));
+			Console.WriteLine($"pt2 Tree Count: {trees}");
 		}
 	}
 }
