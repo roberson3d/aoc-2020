@@ -11,7 +11,7 @@ namespace aoc2020
 		{
 			/************ Day 01 **************/
 			var target = 2020;
-			var values = File.ReadAllLines(@"Data/input-D01.txt")
+			var values = File.ReadAllLines(@"Day01/input.txt")
 				.Select(line => int.Parse(line));
 
 			var arr = new int[2] { 0, 0 };
@@ -37,7 +37,7 @@ namespace aoc2020
 
 			/************ Day 02 **************/
 			Regex expression = new Regex(@"(?<min>\d+)-(?<max>\d+)\s(?<char>\w):\s(?<password>\w+)");
-			var values02 = File.ReadAllLines(@"Data/input-D02.txt")
+			var values02 = File.ReadAllLines(@"Day02/input.txt")
 				.Select(line => {
 					var match = expression.Match(line);
 					if (match.Success) {
@@ -60,7 +60,7 @@ namespace aoc2020
 
 
 			/************ Day 03 **************/
-			var map = File.ReadAllLines(@"Data/input-D03.txt");
+			var map = File.ReadAllLines(@"Day03/input.txt");
 
 			var toboggan = new Toboggan();
 			long trees = toboggan.Sled(map, new Slope(3, 1));

@@ -32,21 +32,26 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Passcode.cs" />
-    <Compile Include="SumSearcher.cs" />
-    <Compile Include="Slope.cs" />
-    <Compile Include="Toboggan.cs" />
+    <Compile Include="Day01\SumSearcher.cs" />
+    <Compile Include="Day02\Passcode.cs" />
+    <Compile Include="Day03\Slope.cs" />
+    <Compile Include="Day03\Toboggan.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\input-D01.txt">
+    <Content Include="Day01\input.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\input-D02.txt">
+    <Content Include="Day02\input.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\input-D03.txt">
+    <Content Include="Day03\input.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Day01\" />
+    <Folder Include="Day02\" />
+    <Folder Include="Day03\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
