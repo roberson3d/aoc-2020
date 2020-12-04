@@ -15,7 +15,7 @@ namespace aoc2020
 				.Select(line => int.Parse(line));
 
 			var arr = new int[2] { 0, 0 };
-			var search = new SumSearcher(target, values.ToList ());
+			var search = new SumSearcher(target, values.ToList());
 
 
 			if (search.FindSums(ref arr)) {
@@ -34,7 +34,7 @@ namespace aoc2020
 			} else {
 				Console.WriteLine($"pt2 Sum {target} not found.");
 			}
-  
+
 			/************ Day 02 **************/
 			Regex expression = new Regex(@"(?<min>\d+)-(?<max>\d+)\s(?<char>\w):\s(?<password>\w+)");
 			var values02 = File.ReadAllLines(@"Data/input-D02.txt")
@@ -60,21 +60,49 @@ namespace aoc2020
 
 
 			/************ Day 03 **************/
-			int slope = 3, trees = 0;
 			var map = File.ReadAllLines(@"Data/input-D03.txt");
 
-			for (int x = 0, y = 0; y < map.Length; y++, x += slope) {
-				var plot = map[y][x % map[y].Length];
+			var toboggan = new Toboggan();
+			long trees = toboggan.Sled(map, new Slope(3, 1));
+			Console.WriteLine($"pt1 Tree Count: {trees}");
 
-				var isTree = plot == '#';
-				if (isTree) {
-					trees++;
+			trees = 1;
+			trees *= toboggan.Sled(map, new Slope(1, 1));
+			trees *= toboggan.Sled(map, new Slope(3, 1));
+			trees *= toboggan.Sled(map, new Slope(5, 1));
+			trees *= toboggan.Sled(map, new Slope(7, 1));
+			trees *= toboggan.Sled(map, new Slope(1, 2));
+			Console.WriteLine($"pt2 Tree Count: {trees}");
+		}
+
+		public struct Slope {
+			public readonly int right;
+			public readonly int down;
+
+			public Slope(int right, int down)
+			{
+				this.right = right;
+				this.down = down;
+			}
+		}
+
+		public struct Toboggan {
+			public int Sled (in string[] map, Slope slope)
+			{
+				int trees = 0;
+				for (int x = 0, y = 0; y < map.Length; x += slope.right, y += slope.down) {
+					var plot = map[y][x % map[y].Length];
+
+					var isTree = plot == '#';
+					if (isTree) {
+						trees++;
+					}
+
+					//Console.WriteLine($"{map[y]} ::: {(isTree ? trees.ToString() : ".")}   ({x.ToString()}, {y.ToString()})");
 				}
 
-				//Console.WriteLine($"{map[y]} ::: {(isTree ? trees.ToString () : ".")}   {y.ToString ()}, {x.ToString ()}");
+				return trees;
 			}
-
-			Console.WriteLine($"pt1 Tree Count: {trees}");
 		}
 	}
 }
