@@ -60,12 +60,16 @@
     <Folder Include="Day02\" />
     <Folder Include="Day03\" />
     <Folder Include="Day04\" />
+    <Folder Include="Day05\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0-preview.2">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>     
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Day05\input.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
