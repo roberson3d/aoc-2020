@@ -25,7 +25,7 @@ namespace aoc2020
 			PassportID = string.Empty;
 			CountryID = string.Empty;
 
-			const string regex = @"(?<key>[\w]+):#?(?<value>[\w]+)";
+			const string regex = @"(?<key>[\w]+):(?<value>#?[\w]+)";
 			Regex rx = new Regex(regex, RegexOptions.Compiled | RegexOptions.IgnoreCase);
 			MatchCollection matches = rx.Matches(info);
 			// Report on each match.
@@ -46,18 +46,7 @@ namespace aoc2020
 			}
 		}
 
-		public bool IsValid()
-			=> !string.IsNullOrWhiteSpace(BirthYear)
-			&& !string.IsNullOrWhiteSpace(IssueYear)
-			&& !string.IsNullOrWhiteSpace(ExpirationYear)
-			&& !string.IsNullOrWhiteSpace(Height)
-			&& !string.IsNullOrWhiteSpace(HairColor)
-			&& !string.IsNullOrWhiteSpace(EyeColor)
-			&& !string.IsNullOrWhiteSpace(PassportID)
-			//&& !string.IsNullOrWhiteSpace(CountryID)
-			;
-
 		public override string ToString()
-			=> $"{(IsValid () ? "    " : "XXXX")}\tBirth: {BirthYear, -5}\tIssued: {IssueYear,-5}\tExp: {ExpirationYear,-5}\tHeight: {Height,-5}\tHair: {HairColor,-5}\tEye: {EyeColor,-5}\tCountry: {CountryID,-10}\tPassport: {PassportID,-10}";
+			=> $"Birth: {BirthYear, -5}\tIssued: {IssueYear,-5}\tExp: {ExpirationYear,-5}\tHeight: {Height,-5}\tHair: {HairColor,-5}\tEye: {EyeColor,-5}\tCountry: {CountryID,-10}\tPassport: {PassportID,-10}";
 	}
 }

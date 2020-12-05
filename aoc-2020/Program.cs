@@ -97,12 +97,21 @@ namespace aoc2020
 		{
 			var data = File.ReadAllText(@"Day04/input.txt")
 				.Split(new string[] { Environment.NewLine + Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
-				.Select(val => new PassportInfo(val))
-				.Where(passport => passport.IsValid())
-				;
+				.Select(val => new PassportInfo(val));
 
 			foreach (var entry in data) { Console.WriteLine(entry.ToString()); }
-			Console.WriteLine($"pt1 valid passports Count: {data.Count()}");
+
+			var basic = new BasicVarifier();
+			var basicCount = data
+				.Where(passport => basic.IsValid(passport))
+				.Count ();
+			Console.WriteLine($"pt1 valid passports Count: {basicCount}");
+
+			var full = new FullVarifier();
+			var fullCount = data
+				.Where(passport => full.IsValid(passport))
+				.Count();
+			Console.WriteLine($"pt2 valid passports Count: {fullCount}");
 		}
 	}
 }
