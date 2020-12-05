@@ -95,7 +95,14 @@ namespace aoc2020
 		/************ Day 04 **************/
 		public void Day04()
 		{
+			var data = File.ReadAllText(@"Day04/input.txt")
+				.Split(new string[] { Environment.NewLine + Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
+				.Select(val => new PassportInfo(val))
+				.Where(passport => passport.IsValid())
+				;
 
+			foreach (var entry in data) { Console.WriteLine(entry.ToString()); }
+			Console.WriteLine($"pt1 valid passports Count: {data.Count()}");
 		}
 	}
 }

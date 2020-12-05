@@ -36,6 +36,7 @@
     <Compile Include="Day02\Passcode.cs" />
     <Compile Include="Day03\Slope.cs" />
     <Compile Include="Day03\Toboggan.cs" />
+    <Compile Include="Day04\PassportInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Day01\input.txt">
