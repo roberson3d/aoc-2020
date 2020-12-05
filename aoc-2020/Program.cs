@@ -15,6 +15,7 @@ namespace aoc2020
 			aoc.Day02();
 			aoc.Day03();
 			aoc.Day04();
+			aoc.Day05();
 		}
 	}
 
@@ -50,7 +51,7 @@ namespace aoc2020
 		}
 
 		/************ Day 02 **************/
-		public void Day02 () {
+		public void Day02() {
 			Regex expression = new Regex(@"(?<min>\d+)-(?<max>\d+)\s(?<char>\w):\s(?<password>\w+)");
 			var values02 = File.ReadAllLines(@"Day02/input.txt")
 				.Select(line => {
@@ -104,7 +105,7 @@ namespace aoc2020
 			var basic = new BasicVarifier();
 			var basicCount = data
 				.Where(passport => basic.IsValid(passport))
-				.Count ();
+				.Count();
 			Console.WriteLine($"pt1 valid passports Count: {basicCount}");
 
 			var full = new FullVarifier();
@@ -113,5 +114,34 @@ namespace aoc2020
 				.Count();
 			Console.WriteLine($"pt2 valid passports Count: {fullCount}");
 		}
+
+		public void Day05()
+		{
+			int row, col;
+			var converter = new TicketConversion();
+			var seats = File.ReadAllLines(@"Day05/input.txt")
+				.Select(line => new Ticket(line))
+				.Select(ticket => converter.ConvertToSeat(ticket, out row, out col))
+				.OrderBy(x => x);
+
+			////BFFFBBFRRR: row 70, column 7, seat ID 567.
+			//Console.WriteLine($"{converter.ConvertToSeat(new Ticket("BFFFBBFRRR"), out row, out col)} @ [{row}, {col}]");
+			////FFFBBBFRRR: row 14, column 7, seat ID 119.
+			//Console.WriteLine($"{converter.ConvertToSeat(new Ticket("FFFBBBFRRR"), out row, out col)} @ [{row}, {col}]");
+			////BBFFBBFRLL: row 102, column 4, seat ID 820.
+			//Console.WriteLine($"{converter.ConvertToSeat(new Ticket("BBFFBBFRLL"), out row, out col)} @ [{row}, {col}]");
+
+			Console.WriteLine($"pt1 last seat: {seats.LastOrDefault()}");
+
+			// find first empty seat
+			var arr = seats.ToArray();
+			for (int i = 0; i < arr.Length - 1; i++) {
+				if (arr[i] != arr[i + 1] - 1) {
+					Console.WriteLine($"pt2 my seat: {arr[i] + 1}");
+					break;
+				}
+			}
+		}
+
 	}
 }
