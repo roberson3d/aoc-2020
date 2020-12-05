@@ -5,11 +5,24 @@ using System.Text.RegularExpressions;
 
 namespace aoc2020
 {
-	partial class MainClass
+	class MainClass
 	{
 		public static void Main(string[] args)
 		{
-			/************ Day 01 **************/
+			var aoc = new AOCProgram();
+
+			aoc.Day01();
+			aoc.Day02();
+			aoc.Day03();
+			aoc.Day04();
+		}
+	}
+
+	internal struct AOCProgram
+	{
+		/************ Day 01 **************/
+		public void Day01()
+		{
 			var target = 2020;
 			var values = File.ReadAllLines(@"Day01/input.txt")
 				.Select(line => int.Parse(line));
@@ -34,8 +47,10 @@ namespace aoc2020
 			} else {
 				Console.WriteLine($"pt2 Sum {target} not found.");
 			}
+		}
 
-			/************ Day 02 **************/
+		/************ Day 02 **************/
+		public void Day02 () {
 			Regex expression = new Regex(@"(?<min>\d+)-(?<max>\d+)\s(?<char>\w):\s(?<password>\w+)");
 			var values02 = File.ReadAllLines(@"Day02/input.txt")
 				.Select(line => {
@@ -57,9 +72,11 @@ namespace aoc2020
 			Console.WriteLine($"pt1 Number of valid passcodes: {values02.Where(passcode => sledChecker.IsValid(passcode)).Count()}");
 			var otcChecker = new OTCPasscodeChecker();
 			Console.WriteLine($"pt2 Number of valid passcodes: {values02.Where(passcode => otcChecker.IsValid(passcode)).Count()}");
+		}
 
-
-			/************ Day 03 **************/
+		/************ Day 03 **************/
+		public void Day03()
+		{
 			var map = File.ReadAllLines(@"Day03/input.txt");
 
 			var toboggan = new Toboggan();
@@ -73,6 +90,12 @@ namespace aoc2020
 			trees *= toboggan.Sled(map, new Slope(7, 1));
 			trees *= toboggan.Sled(map, new Slope(1, 2));
 			Console.WriteLine($"pt2 Tree Count: {trees}");
+		}
+
+		/************ Day 04 **************/
+		public void Day04()
+		{
+
 		}
 	}
 }
