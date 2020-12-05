@@ -36,6 +36,10 @@
     <Compile Include="Day02\Passcode.cs" />
     <Compile Include="Day03\Slope.cs" />
     <Compile Include="Day03\Toboggan.cs" />
+    <Compile Include="Day04\PassportInfo.cs" />
+    <Compile Include="Day04\IPassportVarifier.cs" />
+    <Compile Include="Day04\BasicVarifier.cs" />
+    <Compile Include="Day04\FullVarifier.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Day01\input.txt">
@@ -47,11 +51,15 @@
     <Content Include="Day03\input.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Day04\input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Day01\" />
     <Folder Include="Day02\" />
     <Folder Include="Day03\" />
+    <Folder Include="Day04\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0-preview.2">
