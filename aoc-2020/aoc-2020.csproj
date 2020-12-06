@@ -42,6 +42,7 @@
     <Compile Include="Day04\FullVarifier.cs" />
     <Compile Include="Day05\Ticket.cs" />
     <Compile Include="Day05\TicketConversion.cs" />
+    <Compile Include="Day06\CultureDeclaration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Day01\input.txt">

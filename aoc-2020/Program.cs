@@ -16,6 +16,7 @@ namespace aoc2020
 			aoc.Day03();
 			aoc.Day04();
 			aoc.Day05();
+			aoc.Day06();
 		}
 	}
 
@@ -143,5 +144,17 @@ namespace aoc2020
 			}
 		}
 
+		public void Day06()
+		{
+			var data = File.ReadAllText(@"Day06/input.txt")
+				.Split(new string[] { Environment.NewLine + Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
+				.Select(val => new CultureDeclaration(val));
+			var pt1 = data.Sum(cd => cd.atLeastOneYesCount);
+			var pt2 = data.Sum(cd => cd.allYesCount);
+
+			Console.WriteLine($"pt1 Sum: {pt1}");
+			Console.WriteLine($"pt2 Sum: {pt2}");
+
+		}
 	}
 }
