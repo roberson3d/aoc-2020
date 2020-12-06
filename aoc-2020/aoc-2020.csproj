@@ -42,6 +42,7 @@
     <Compile Include="Day04\FullVarifier.cs" />
     <Compile Include="Day05\Ticket.cs" />
     <Compile Include="Day05\TicketConversion.cs" />
+    <Compile Include="Day06\CultureDeclaration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Day01\input.txt">
@@ -59,6 +60,9 @@
     <Content Include="Day05\input.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Day06\input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Day01\" />
@@ -66,6 +70,7 @@
     <Folder Include="Day03\" />
     <Folder Include="Day04\" />
     <Folder Include="Day05\" />
+    <Folder Include="Day06\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0-preview.2">
