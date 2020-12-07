@@ -7,23 +7,31 @@ namespace aoc2020
 {
 	class MainClass
 	{
+		static IAOCProgram[] programs = new IAOCProgram[] {
+			new Day01 (),
+			new Day02 (),
+			new Day03 (),
+			new Day04 (),
+			new Day05 (),
+			new Day06 ()
+		};
+
 		public static void Main(string[] args)
 		{
-			var aoc = new AOCProgram();
-
-			aoc.Day01();
-			aoc.Day02();
-			aoc.Day03();
-			aoc.Day04();
-			aoc.Day05();
-			aoc.Day06();
+			foreach (var program in programs) {
+				program.Run();
+			}
 		}
 	}
 
-	internal struct AOCProgram
+	interface IAOCProgram
 	{
-		/************ Day 01 **************/
-		public void Day01()
+		void Run();
+	}
+
+	internal struct Day01 : IAOCProgram
+	{
+		public void Run()
 		{
 			var target = 2020;
 			var values = File.ReadAllLines(@"Day01/input.txt")
@@ -50,9 +58,12 @@ namespace aoc2020
 				Console.WriteLine($"pt2 Sum {target} not found.");
 			}
 		}
+	}
 
-		/************ Day 02 **************/
-		public void Day02() {
+	internal struct Day02 : IAOCProgram
+	{
+		public void Run()
+		{
 			Regex expression = new Regex(@"(?<min>\d+)-(?<max>\d+)\s(?<char>\w):\s(?<password>\w+)");
 			var values02 = File.ReadAllLines(@"Day02/input.txt")
 				.Select(line => {
@@ -75,9 +86,11 @@ namespace aoc2020
 			var otcChecker = new OTCPasscodeChecker();
 			Console.WriteLine($"pt2 Number of valid passcodes: {values02.Where(passcode => otcChecker.IsValid(passcode)).Count()}");
 		}
+	}
 
-		/************ Day 03 **************/
-		public void Day03()
+	internal struct Day03 : IAOCProgram
+	{
+		public void Run()
 		{
 			var map = File.ReadAllLines(@"Day03/input.txt");
 
@@ -93,13 +106,15 @@ namespace aoc2020
 			trees *= toboggan.Sled(map, new Slope(1, 2));
 			Console.WriteLine($"pt2 Tree Count: {trees}");
 		}
+	}
 
-		/************ Day 04 **************/
-		public void Day04()
+	internal struct Day04 : IAOCProgram
+	{
+		public void Run()
 		{
 			var data = File.ReadAllText(@"Day04/input.txt")
-				.Split(new string[] { Environment.NewLine + Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
-				.Select(val => new PassportInfo(val));
+			.Split(new string[] { Environment.NewLine + Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
+			.Select(val => new PassportInfo(val));
 
 			foreach (var entry in data) { Console.WriteLine(entry.ToString()); }
 
@@ -115,8 +130,11 @@ namespace aoc2020
 				.Count();
 			Console.WriteLine($"pt2 valid passports Count: {fullCount}");
 		}
+	}
 
-		public void Day05()
+	internal struct Day05 : IAOCProgram
+	{
+		public void Run()
 		{
 			int row, col;
 			var converter = new TicketConversion();
@@ -143,12 +161,15 @@ namespace aoc2020
 				}
 			}
 		}
+	}
 
-		public void Day06()
+	internal struct Day06 : IAOCProgram
+	{
+		public void Run()
 		{
 			var data = File.ReadAllText(@"Day06/input.txt")
-				.Split(new string[] { Environment.NewLine + Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
-				.Select(val => new CultureDeclaration(val));
+			.Split(new string[] { Environment.NewLine + Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
+			.Select(val => new CultureDeclaration(val));
 
 			var pt1 = data.Sum(cd => cd.tally.Count(entry => entry > 0));
 			Console.WriteLine($"pt1 Sum: {pt1}");
