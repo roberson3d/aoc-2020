@@ -1,6 +1,6 @@
 ﻿namespace aoc2020
 {
-	class MainClass
+	partial class MainClass
 	{
 		public static void Main(string[] args)
 		{
@@ -10,7 +10,8 @@
 				new Day03 (),
 				new Day04 (),
 				new Day05 (),
-				new Day06 ()
+				new Day06 (),
+				new Day07 ()
 			};
 
 			foreach (var program in programs) {
