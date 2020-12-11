@@ -12,8 +12,6 @@ namespace aoc2020
 			.Split(new string[] { Environment.NewLine + Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
 			.Select(val => new PassportInfo(val));
 
-			foreach (var entry in data) { Console.WriteLine(entry.ToString()); }
-
 			var basic = new BasicVarifier();
 			var basicCount = data
 				.Where(passport => basic.IsValid(passport))
